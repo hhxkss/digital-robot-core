@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: digital-robot-core
+
+server:
+  port: 8088
+#  address: 127.0.0.1
+
+robot:
+  chassis:
+    mode: sim       # yangcheng | sim
+    autoOpen: true
+  nav:
+    notifyAvatarOnArrival: false   # 若你在 NavResultHandler 里做直连数字人，这里可控制开关
+    arrivalCooldownMs: 3000
+
