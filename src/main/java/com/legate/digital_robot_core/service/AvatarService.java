@@ -1,6 +1,6 @@
 package com.legate.digital_robot_core.service;
 
-import com.legate.digital_robot_core.ws.WsOutbound;
+import com.legate.digital_robot_core.avatar.AvatarGateway;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
@@ -11,12 +11,12 @@ import java.util.concurrent.*;
 @Service
 public class AvatarService {
 
-    private final WsOutbound outbound;
+    private final AvatarGateway outbound;
     private final ConcurrentHashMap<String, CompletableFuture<Map<String, Object>>> pending = new ConcurrentHashMap<>();
     private static final Duration DEFAULT_TIMEOUT = Duration.ofSeconds(5);
 
-    public AvatarService(WsOutbound outbound) {
-        this.outbound = outbound; // 可在单测里传入一个假的 WsOutbound
+    public AvatarService(AvatarGateway outbound) {
+        this.outbound = outbound; // 可在单测里传入一个假的 AvatarGateway
     }
 
     // —— 强类型接口（单测可直接调用） ——

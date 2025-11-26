@@ -5,6 +5,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -16,7 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/chassis")
+@RequestMapping("${robot.chassis.api.base-path:/api/v1/chassis}")
+@ConditionalOnProperty(prefix = "robot.chassis.api", name = "enabled", havingValue = "true", matchIfMissing = true)
 @RequiredArgsConstructor
 @Validated
 public class ChassisController {
