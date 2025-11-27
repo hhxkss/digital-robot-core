@@ -1,6 +1,7 @@
 package com.legate.digital_robot_core.ws;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.legate.digital_robot_core.avatar.AvatarGateway;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -12,7 +13,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Component
-public class WsGateway implements WsOutbound {
+public class WsGateway implements AvatarGateway {
 
     private final Set<WebSocketSession> sessions = ConcurrentHashMap.newKeySet();
     private final ObjectMapper om = new ObjectMapper();
